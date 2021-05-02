@@ -1,0 +1,42 @@
+version: "3"
+services:
+  udagram-proxy:
+      image: leandrorondon/udagram-proxy
+      ports:
+          - 8080:8080
+      restart: always
+      depends_on:
+        - udagram-api-user
+        - udagram-api-feed 
+  udagram-api-user:
+    image: leandrorondon/udagram-api-user
+    environment:
+      POSTGRES_USERNAME: $POSTGRES_USERNAME
+      POSTGRES_PASSWORD: $POSTGRES_PASSWORD 
+      POSTGRES_DB: $POSTGRES_DB 
+      POSTGRES_HOST: $POSTGRES_HOST 
+      AWS_REGION: $AWS_REGION 
+      AWS_PROFILE: $AWS_PROFILE 
+      AWS_BUCKET: $AWS_BUCKET
+      JWT_SECRET: $JWT_SECRET
+      URL: "http://localhost:8100"
+      PORT: $PORT
+  udagram-api-feed:
+    image: leandrorondon/udagram-api-feed
+    environment:
+      POSTGRES_USERNAME: $POSTGRES_USERNAME
+      POSTGRES_PASSWORD: $POSTGRES_PASSWORD 
+      POSTGRES_DB: $POSTGRES_DB 
+      POSTGRES_HOST: $POSTGRES_HOST 
+      AWS_REGION: $AWS_REGION 
+      AWS_PROFILE: $AWS_PROFILE 
+      AWS_BUCKET: $AWS_BUCKET
+      JWT_SECRET: $JWT_SECRET
+      URL: "http://localhost:8100"
+      AWS_ACCESS_KEY_ID: $AWS_ACCESS_KEY_ID
+      AWS_SECRET_ACCESS_KEY: $AWS_SECRET_ACCESS_KEY
+      PORT: $PORT
+  udagram-frontend:
+    image: leandrorondon/udagram-frontend
+    ports:
+      - "8100:80"
