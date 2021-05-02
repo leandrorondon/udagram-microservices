@@ -10,7 +10,7 @@ RUN npm run build
 FROM node:12-alpine
 WORKDIR /app
 COPY --from=build /app/www/ .
-COPY package*.json .
+COPY package*.json ./
 RUN npm ci
 EXPOSE 8080
 CMD ["node", "server.js"]

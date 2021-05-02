@@ -11,7 +11,7 @@ RUN npm run build
 FROM node:12-alpine
 WORKDIR /app
 COPY --from=build /app/www/ .
-COPY package*.json .
+COPY package*.json ./
 RUN apk --no-cache add --virtual builds-deps build-base python
 RUN npm ci
 EXPOSE 8080
