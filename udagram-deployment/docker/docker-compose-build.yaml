@@ -2,17 +2,17 @@ version: "3"
 services:
   udagram-proxy:
     build:
-      context: ../udagram-proxy
+      context: ../../udagram-proxy
     image: leandrorondon/udagram-proxy
   udagram-api-user:
     build:
-      context: ../udagram-api-user
+      context: ../../udagram-api-user
     image: leandrorondon/udagram-api-user
   udagram-api-feed:
     build:
-      context: ../udagram-api-feed
+      context: ../../udagram-api-feed
     image: leandrorondon/udagram-api-feed
   udagram-frontend:
     build:
-      context: ../udagram-frontend
+      context: ../../udagram-frontend
     image: leandrorondon/udagram-frontend

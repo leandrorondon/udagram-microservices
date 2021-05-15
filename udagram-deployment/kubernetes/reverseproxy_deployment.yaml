@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: udagram-proxy
+  labels:
+    service: udagram-proxy
+spec:
+  selector:
+    matchLabels:
+      service: udagram-proxy
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        service: udagram-proxy
+    spec:
+      containers:
+        - name: udagram-proxy
+          image: leandrorondon/udagram-proxy
+          imagePullPolicy: Always
+          resources:
+            limits:
+              memory: "128Mi"
+              cpu: "500m"
+          ports:
+            - containerPort: 8080
+      restartPolicy: Always
