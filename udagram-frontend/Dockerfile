@@ -5,7 +5,7 @@ COPY package*.json /app/
 RUN npm install -g ionic
 RUN npm ci
 COPY ./ /app/
-RUN ionic build
+RUN ionic build --prod
 
 ## Run 
 FROM nginx:alpine
