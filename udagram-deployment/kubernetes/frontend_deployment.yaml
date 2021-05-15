@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    service: udagram-frontend
+  name: udagram-frontend
+spec:
+  selector:
+    matchLabels:
+      service: udagram-frontend
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        service: udagram-frontend
+        api: external        
+    spec:
+      containers:
+      - image: leandrorondon/udagram-frontend
+        name: udagram-frontend
+        imagePullPolicy: Always          
+        ports:
+        - containerPort: 80
+        resources:
+          limits:
+            memory: "256Mi"
+            cpu: "500m"                
+      restartPolicy: Always
