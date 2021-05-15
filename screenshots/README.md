@@ -1,3 +1,7 @@
+# Udagram
+
+The deployed project is available at [http://a761ee9cca9464ef48ff3ec5069726fb-843040621.us-east-1.elb.amazonaws.com](http://a761ee9cca9464ef48ff3ec5069726fb-843040621.us-east-1.elb.amazonaws.com).
+
 # Screenshots
 To help review your infrastructure, please include the following screenshots in this directory::
 
